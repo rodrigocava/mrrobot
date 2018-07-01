@@ -1,0 +1,25 @@
+{
+	"verbose": "False",
+	"title":"Mr. Robot",
+	
+	"size": 1,
+	"width": 320,
+	"height": 240,
+	"channels": 3,
+
+	"required_login": "True",
+	"port": 8090,
+	"cookie":"selfdrivingrccar",
+
+	"model": "/home/pi/Desktop/Sync_structured/config/keras_model_0.01_learning_rate_32_batch_size_SGD_optimizer_89.0_acc.model",
+	"train_data_storage": "/home/pi/Desktop/Code/",
+	"pigame":"False",
+
+	"car_config": {
+		 "FORWARD": 	{"pin": 15, "label_code":0}
+		,"RIGHT": 		{"pin": 7,  "label_code":1}
+		,"LEFT": 		{"pin": 11, "label_code":2}
+		,"BACKWARDS": 	{"pin": 13, "label_code":-1}
+		,"SPEED":	 	{"pin": 16, "default":55}
+	}
+}
