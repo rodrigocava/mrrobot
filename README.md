@@ -1,7 +1,8 @@
 # Mr. Robot
 A Self-Driving Remote Control Car controlled by a browser. All inside a Raspberry Pi
-
-![](https://i.imgur.com/ubOilp4.gifv)
+<p align="center">
+ <img width="500" src="https://i.imgur.com/t805DXf.png">
+<p>
 
 ## Hardware
 * [Remote control car](https://pt.aliexpress.com/item/Rastar-1-24-4CH-RC-Carros-Cole-o-De-Carros-de-R-dio-Controlado-M-quinas/32681416187.html?spm=a2g0s.9042311.0.0.d642b90aBFGyXD)
@@ -13,9 +14,13 @@ A Self-Driving Remote Control Car controlled by a browser. All inside a Raspberr
 ### Harware Architecture
 The remote control car has 2 DC motors, and I used the L298N module to control them. You can see how to do that [here](https://www.youtube.com/watch?v=AZSiqj0NZgU). Both the motors and the L298N module are powered by 4AA batteries. The Raspberry Pi is powered by an external battery and we have also a Pi Camera with it. Finally, There are a few jump wires connecting the GPIO from the PI to the L298N module.
 
-![Diagram](https://i.imgur.com/qCoycux.png)
-
-![Real photo](https://i.imgur.com/IiQeJpG.jpg)
+<p align="center">
+ <img width="500" src="https://i.imgur.com/qCoycux.png">
+<p>
+ 
+<p align="center">
+ <img width="700" src="https://i.imgur.com/IiQeJpG.jpg">
+<p>
 
 ## Software
 This 
