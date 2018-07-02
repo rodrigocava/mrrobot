@@ -1,5 +1,7 @@
 # Mr. Robot
-A Self Driving Remote Control Car
+A Self-Driving Remote Control Car controlled by a browser. All inside a Raspberry Pi
+
+![](https://i.imgur.com/ubOilp4.gifv)
 
 ## Hardware
 * [Remote control car](https://pt.aliexpress.com/item/Rastar-1-24-4CH-RC-Carros-Cole-o-De-Carros-de-R-dio-Controlado-M-quinas/32681416187.html?spm=a2g0s.9042311.0.0.d642b90aBFGyXD)
