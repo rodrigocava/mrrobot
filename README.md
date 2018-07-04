@@ -1,5 +1,6 @@
 # Mr. Robot
 A Self-Driving Remote Control Car controlled by a browser. All inside a Raspberry Pi
+
 <p align="center">
  <img width="500" src="https://i.imgur.com/t805DXf.png">
 <p>
@@ -23,7 +24,23 @@ The remote control car has 2 DC motors, and I used the L298N module to control t
 <p>
 
 ## Software
-This 
+
+### Challenges
+Considering that I wanted to run every thing inside the raspberry pi (sever, object detection, tunr prediction, etc) a big concern was always spped and performance. If the turn prediction took more than 500ms the car would miss its turn and miss the road. Although there maybe even more optimizations, the current program makes a prediction+turn in 300ms, which is more than enough for the success of the project.
+
+### Model trainning
+
+![Training Process](https://i.imgur.com/8ds6or1.png)
+
+### Turn prediction
+In a train mode, every turn issued by my command was linked to a picture taken from the car. I gathered a few hundreds of pictures + turn pairs and trained a Deep Learning model using Keras based on [this Nvidia article](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) and explained in [this video](https://www.youtube.com/watch?v=EaY5QiZwSP4). The model has an image normalization to avoid saturation and make gradients work better, 5 layers of a CNN to handle feature engineering, drop out layer to avoid overfitting, and finally 5 fully connected layers for predicting the turn.
+
+
+### Object detection
+The stop sign detection was made using Haar feature-based cascade classifiers. OpenCV have a very comprehensive functions and you can train your own model following tutorials like [this](https://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html). This approach is good considering it's very fast and we speed to detect, calssify and take action for every single frame. I used a pre-trained classifier from [here](https://github.com/hamuchiwa/AutoRCCar) and it worked very well for my stop sign.
+
+
+
 
 ### Software Architecture
 The main program buids an Self Driving Car object and starts a WebServer for the remote and camera stream. The car is made of a few parts:
@@ -33,9 +50,10 @@ The main program buids an Self Driving Car object and starts a WebServer for the
 * CarCamera:
   * Handles camera stream and object detection for the stop sign
 * WebServer:
-  * Creates a webserver to stream the camera and control
+  * Creates a webserver to stream the camera and control the car
 * TrainData:
   * Handles gathering and saving train data
 * CarBrain:
   * Handles the load of the pre-build Machine Learning model and self-driving based on the camera images
+
   
