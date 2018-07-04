@@ -29,16 +29,21 @@ The remote control car has 2 DC motors, and I used the L298N module to control t
 Considering that I wanted to run every thing inside the raspberry pi (sever, object detection, tunr prediction, etc) a big concern was always spped and performance. If the turn prediction took more than 500ms the car would miss its turn and miss the road. Although there maybe even more optimizations, the current program makes a prediction+turn in 300ms, which is more than enough for the success of the project.
 
 ### Model trainning
+To generate data, the train mode saved a frame in a rgb array with the correct command issued by me, that been forward, left or right. After I gathered a few hundreds of pictures + turn pairs I loaded everything into my computer and used a script to replicate that train data by flipping the images (and adjusting the command accordingly) and also changing the image brightness or colors. With all that, I trained several variations of a Deep Learning model using Keras based on [this Nvidia article](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) and explained in [this video](https://www.youtube.com/watch?v=EaY5QiZwSP4). The model has an image normalization to avoid saturation and make gradients work better, 5 layers of a CNN to handle feature engineering, drop out layer to avoid overfitting, and finally 5 fully connected layers for predicting the turn.
 
-![Training Process](https://i.imgur.com/8ds6or1.png)
+<p align="center">
+ <img width="800" src="https://i.imgur.com/8ds6or1.png">
+<p>
 
-### Turn prediction
-In a train mode, every turn issued by my command was linked to a picture taken from the car. I gathered a few hundreds of pictures + turn pairs and trained a Deep Learning model using Keras based on [this Nvidia article](https://devblogs.nvidia.com/deep-learning-self-driving-cars/) and explained in [this video](https://www.youtube.com/watch?v=EaY5QiZwSP4). The model has an image normalization to avoid saturation and make gradients work better, 5 layers of a CNN to handle feature engineering, drop out layer to avoid overfitting, and finally 5 fully connected layers for predicting the turn.
-
+### Self-driving
+The pre-trained model is loaded on the start of the program. Once the command from any browser comes in a loop starts the self-driving: the process gathers the most recent img, makes the prediction and turns the car.
 
 ### Object detection
 The stop sign detection was made using Haar feature-based cascade classifiers. OpenCV have a very comprehensive functions and you can train your own model following tutorials like [this](https://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html). This approach is good considering it's very fast and we speed to detect, calssify and take action for every single frame. I used a pre-trained classifier from [here](https://github.com/hamuchiwa/AutoRCCar) and it worked very well for my stop sign.
 
+<p align="center">
+ <img width="800" src="https://i.imgur.com/pKZXgAs.png">
+<p>
 
 
 
