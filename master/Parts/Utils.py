@@ -1,5 +1,6 @@
 import datetime as dt
 import argparse
+import socket
 import time
 import json
 import os
@@ -25,6 +26,17 @@ def get_password():
 	with open(os.path.join(root, "../config/password.txt")) as in_file:
 		password = in_file.read().strip()
 	return password
+
+def get_ip():
+	s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+	try:
+		s.connect(('10.255.255.255',1))
+		ip = s.getsockname()[0]
+	except:
+		ip = '127.0.0.1'
+	finally:
+		s.close()
+	return ip
 
 def print_log(_msg,_identation=0,_time=0):
 	ident = '	'*_identation

@@ -14,5 +14,5 @@ if(__name__ == "__main__"):
 	car.webserver = WebServer.LocalServer(parameters['webserver_params'], car)	
 
 	# Run !
-	print('>> Ready to roll!')
+	print('>> Ready to roll! Visit me at %s:%s'%(car.webserver.ip,car.webserver.port))
 	car.webserver.stream()

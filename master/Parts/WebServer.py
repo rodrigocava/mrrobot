@@ -16,6 +16,7 @@ class LocalServer(tornado.web.Application):
     def __init__(self,params,_car):
         Utils.print_log("Init. server",1)
 
+        self.ip = Utils.get_ip()
         self.require_login = params['require_login']
         self.cookie = params['cookie']
         self.port = params['port']
